@@ -1,4 +1,5 @@
-<?php
+<?php if (!defined('APPLICATION')) exit();
+
 $PluginInfo['NotifyCommentOnCommented'] = array(
    'Name' => 'Notify Comment on Commented',
    'Description' => 'Notifies if someone has commented on a disicussion the user has commented on',
