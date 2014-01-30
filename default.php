@@ -3,7 +3,7 @@
 $PluginInfo['NotifyCommentOnCommented'] = array(
    'Name' => 'Notify Comment on Commented',
    'Description' => 'Notifies if someone has commented on a disicussion the user has commented on',
-   'Version' => '0.1b',
+   'Version' => '0.1.1b',
    'RequiredApplications' => array('Vanilla' => '2.0.18'),
    'Author' => "Paul Thomas",
    'AuthorEmail' => 'dt01pq_pt@yahoo.com',
