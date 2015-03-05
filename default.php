@@ -22,11 +22,10 @@ class NotifyCommentOnCommented extends Gdn_Plugin {
     
     public function CommentModel_BeforeNotification_Handler($Sender, &$Args){
        
-        $Comment = &$Args['Comment'];
-        $Session = Gdn::Session();
+        $Comment = (object)$Args['Comment'];
             
-        $ActivityModel = &$Args['ActivityModel'];
-        $Discussion = &$Args['Discussion'];
+        $ActivityModel = $Args['ActivityModel'];
+        $Discussion = $Args['Discussion'];
         $DiscussionID = GetValue('DiscussionID', $Discussion);
         $CommentID = GetValue('CommentID', $Comment);
         
@@ -52,7 +51,6 @@ class NotifyCommentOnCommented extends Gdn_Plugin {
             if ($UserMayView) {
 
                $NotifiedUsers[] = $Participant->InsertUserID;
-
                 $ActivityID = $ActivityModel->Add(
                     $Comment->InsertUserID,
                     'CommentOnCommented',
