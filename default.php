@@ -3,7 +3,7 @@
 $PluginInfo['NotifyCommentOnCommented'] = array(
    'Name' => 'Notify Comment on Commented',
    'Description' => 'Notifies if someone has commented on a disicussion the user has commented on',
-   'Version' => '0.1.3b',
+   'Version' => '0.1.4b',
    'RequiredApplications' => array('Vanilla' => '2.1'),
    'Author' => "Paul Thomas",
    'AuthorEmail' => 'dt01pq_pt@yahoo.com',
@@ -71,11 +71,8 @@ class NotifyCommentOnCommented extends Gdn_Plugin {
     }
     
     public function Setup(){
-        if (Gdn::SQL()->GetWhere('ActivityType', array('Name' => 'CommentOnCommented'))->NumRows() == 0)
-                Gdn::SQL()->Insert('ActivityType', array('AllowComments' => '0', 'Name' => 'CommentOnCommented', 'FullHeadline' => '%1$s commented on a %8$s you commented on.', 'ProfileHeadline' => '%1$s commented on a %8$s you commented on.', 'RouteCode' => 'discussion', 'Notify' => '1', 'Public' => '0'));
-        
+        Gdn::SQL()->Replace('ActivityType', array('AllowComments' => '0', 'Name' => 'CommentOnCommented', 'FullHeadline' => '%1$s commented on a %8$s you commented on.', 'ProfileHeadline' => '%1$s commented on a %8$s you commented on.', 'RouteCode' => 'discussion', 'Notify' => '0', 'Public' => '0'), array('Name' => 'CommentOnCommented'));
         SaveToConfig('Plugins.'.$this->GetPluginIndex().'.Version',$this->PluginInfo['Version']);
-    
     }
     
 }
